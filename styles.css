@@ -1,0 +1,260 @@
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure full-page background */
+.background {
+  background-color: #192A56; /* Dark blue background color */
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff; /* White text color */
+  font-family: Arial, sans-serif;
+  position: relative; /* Relative positioning for absolute button */
+}
+
+.container {
+  text-align: center;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.title-section {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+}
+
+.slider-section {
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: hidden;
+  position: relative;
+}
+
+.posters-section {
+  position: relative;
+  height: 100%; /* Full height */
+  overflow: hidden; /* Hide overflow */
+  white-space: nowrap; /* Prevent wrapping of inline elements */
+}
+
+.posters-container {
+  display: flex;
+  flex-shrink: 0; /* Prevent flex items from shrinking */
+  height: 100%; /* Full height */
+}
+
+.poster-container {
+  flex: 0 0 100vw; /* Each poster takes full viewport width */
+  height: 100%; /* Full height */
+  overflow: hidden; /* Hide any overflow to prevent overlapping */
+  position: relative; /* Ensure relative positioning for text overlay */
+}
+
+.poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the poster image covers the container */
+}
+
+.poster-text {
+  position: absolute;
+  bottom: 20px; /* Adjust text position */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.dots-container {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px; /* Adjust bottom margin as needed */
+  width: 100%;
+  z-index: 1;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: gray;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: rgb(3, 3, 10); /* Adjust active dot color */
+}
+
+@media (max-width: 768px) {
+  .title-section h1 {
+    margin-top: 1px; /* Adjust top margin */
+  }
+  
+  .slider-section {
+    padding-bottom: 5px; /* Adjust space for button */
+  }
+  
+  .poster-container {
+    flex: 0 0 100%; /* Adjust to ensure full width on mobile */
+  }
+  
+  model-viewer {
+    width: 100%;
+    height: 90%;
+  }
+
+  #ar-button {
+    bottom: 10px; /* Adjust bottom position on mobile */
+  }
+}
+
+:not(:defined) > * {
+  display: none;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+model-viewer {
+  width: 100%;
+  height: 90%;
+  background-color: transparent; /* Set background to transparent */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.progress-bar {
+  display: block;
+  width: 33%;
+  height: 10%;
+  max-height: 2%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  border-radius: 25px;
+  box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.5), 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.progress-bar.hide {
+  visibility: hidden;
+  transition: visibility 0.3s;
+}
+
+.update-bar {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 0%;
+  height: 100%;
+  border-radius: 25px;
+  float: left;
+  transition: width 0.3s;
+}
+
+#ar-button {
+  background-image: url(ar_icon.png);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: 12px 50%;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  bottom: 16px;
+  padding: 0px 16px 0px 40px;
+  font-family: Roboto Regular, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  color:#4285f4;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 18px;
+  border: 1px solid #DADCE0;
+  z-index: 3;
+}
+
+#ar-button:active {
+  background-color: #E8EAED;
+}
+
+#ar-button:focus {
+  outline: none;
+}
+
+#ar-button:focus-visible {
+  outline: 1px solid #4285f4;
+}
+
+@keyframes circle {
+  from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+}
+
+@keyframes elongate {
+  from { transform: translateX(100px); }
+  to   { transform: translateX(-100px); }
+}
+
+#ar-prompt1 {
+  position: relative;
+  overflow: hidden;
+}
+
+model-viewer > #ar-prompt1 {
+  position: absolute;
+  left: 45%; /* Align the element horizontally to the center */
+  transform: translateX(-50%); /* Center the element precisely */
+  bottom: 550px; /* Add some space from the bottom, adjust as needed */
+  width: 90%; /* Set the width to 90% to allow the text to wrap */
+  max-width: 300px; /* Optionally, set a maximum width for the element */
+  font-family: "Roboto Regular", "Helvetica Neue", sans-serif;
+  font-size: 25px;
+  color: #ffffff;
+  display: none;
+  text-align: center; /* Center the text within the element */
+  white-space: pre-wrap; /* Allow the text to wrap and carry forward to the next line */
+}
+
+model-viewer > #ar-prompt {
+  position: absolute;
+  left: 50%;
+  bottom: 400px;
+  animation: elongate 2s infinite ease-in-out alternate;
+  display: none;
+}
+
+model-viewer[ar-status="session-started"] > #ar-prompt1 {
+  display: block;
+}
+
+model-viewer[ar-status="session-started"] > #ar-prompt {
+  display: block;
+}
+
+model-viewer > #ar-prompt > img {
+  animation: circle 4s linear infinite;
+}
