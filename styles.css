@@ -209,9 +209,19 @@ model-viewer {
   outline: 1px solid #4285f4;
 }
 
+@-webkit-keyframes circle {
+  from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+}
+
 @keyframes circle {
   from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
   to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+}
+
+@-webkit-keyframes elongate {
+  from { transform: translateX(100px); }
+  to   { transform: translateX(-100px); }
 }
 
 @keyframes elongate {
@@ -239,7 +249,7 @@ model-viewer > #ar-prompt1 {
   white-space: pre-wrap; /* Allow the text to wrap and carry forward to the next line */
 }
 
-#restart-button{
+#restart-button {
   background-color: #4285f4;
   color: #fff;
   border: none;
@@ -262,7 +272,7 @@ model-viewer > #ar-prompt1 {
   border-radius: 18px;
   border: 1px solid #DADCE0;
 }
-#screenshot-button{
+#screenshot-button {
   background-color: #4285f4;
   color: #fff;
   border: none;
@@ -311,9 +321,9 @@ model-viewer[ar-status="session-started"] > #ar-prompt {
 }
 
 model-viewer > #ar-prompt > img {
+  -webkit-animation: circle 4s linear infinite;
   animation: circle 4s linear infinite;
 }
-
 
 model-viewer[ar-status="object-placed"] > #restart-button {
   display: block;
