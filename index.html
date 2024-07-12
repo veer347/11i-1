@@ -64,8 +64,8 @@
     <div id="ar-prompt">
       <img src="ar_hand_prompt.png">
     </div>
-    <!-- <button id="restart-button">Restart Experience</button> -->
-    <button id="screenshot-button">Take Screenshot</button>
+    <button id="restart-button">Restart Experience</button>
+    <!-- <button id="screenshot-button">Take Screenshot</button> -->
   </model-viewer> 
   <audio id="background-audio" loop>
     <source src="Come back indian (1).mp3" type="audio/mpeg">
@@ -154,7 +154,7 @@
           stopAudio();
         }
       });
-      // restartButton.addEventListener('click', restartExperience);
+      restartButton.addEventListener('click', restartExperience);
       screenshotButton.addEventListener('click', takeScreenshot);
     });
   </script>
