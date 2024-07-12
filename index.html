@@ -132,10 +132,10 @@
         modelViewer.currentTime = 0;  // Set this to the desired frame time in seconds
         modelViewer.play();
         // Pause after a short delay to ensure the frame is set correctly
-        setTimeout(() => {
-          modelViewer.pause();
-          console.log('Paused at desired frame');
-        }, 5);  // Adjust the delay if needed
+        // setTimeout(() => {
+        //   modelViewer.pause();
+        //   console.log('Paused at desired frame');
+        // }, 5);  // Adjust the delay if needed
       });
 
       modelViewer.addEventListener('ar-status', (event) => {
@@ -143,10 +143,10 @@
           // Play animation and audio when AR session starts
           console.log('AR session started');
           modelViewer.play();
-          setTimeout(() => {
-          modelViewer.pause();
-          console.log('Paused at desired frame');
-        }, 2200);  
+        //   setTimeout(() => {
+        //   modelViewer.pause();
+        //   console.log('Paused at desired frame');
+        // }, 2200);  
           playAudio();
         } else if (event.detail.status === 'not-presenting') {
           // Pause animation and audio when AR session ends
