@@ -47,7 +47,7 @@
     </div>
    
   </div>
-  <model-viewer id="model-viewer" src="finalout.glb" ios-src="final1out.usdz" ar ar-placement="floor" ar-scale="fixed" ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster (4).webp" shadow-intensity="1" animation-name="animation_name" animation-controls>
+  <model-viewer id="model-viewer" src="ffinal.glb" ios-src="final1out.usdz" ar ar-placement="floor" ar-scale="fixed" ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster (4).webp" shadow-intensity="1" animation-name="animation_name" animation-controls>
     <div class="progress-bar hide" slot="progress-bar">
       <div class="update-bar"></div>
     </div>
@@ -63,22 +63,34 @@
     <div id="ar-prompt">
       <img src="ar_hand_prompt.png">
     </div>
+    <button id="restart-button">Restart Experience</button>
   </model-viewer> 
   <audio id="background-audio" loop>
-    <source src="Comebackindian.mp3" type="audio/mpeg">
+    <source src="Come back indian (1).mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio> 
- 
+  
+  
   <!-- Loads <model-viewer> for browsers: -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
 
   <!-- Script to control animation in AR mode -->
   <script>
+
+    function restartExperience() {
+      var modelViewer = document.getElementById('model-viewer');
+      stopAudio();
+      modelViewer.src = modelViewer.src;  // Reload the model viewer
+    }
     function playAudio() {
       var audio = document.getElementById('background-audio');
       audio.play().catch(function(error) {
         console.error('Error playing audio:', error);
       });
+      setTimeout(() => {
+          audio.pause();
+          console.log('Paused at desired frame');
+        }, 19000); 
     }
 
     function stopAudio() {
@@ -90,6 +102,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       var modelViewer = document.getElementById('model-viewer');
       var arButton = document.getElementById('ar-button');
+      var restartButton = document.getElementById('restart-button');
 
       arButton.addEventListener('click', function() {
         // Check if the platform is iOS
@@ -110,7 +123,7 @@
         setTimeout(() => {
           modelViewer.pause();
           console.log('Paused at desired frame');
-        }, 600);  // Adjust the delay if needed
+        }, 5);  // Adjust the delay if needed
       });
 
       modelViewer.addEventListener('ar-status', (event) => {
@@ -118,6 +131,10 @@
           // Play animation and audio when AR session starts
           console.log('AR session started');
           modelViewer.play();
+          setTimeout(() => {
+          modelViewer.pause();
+          console.log('Paused at desired frame');
+        }, 2200);  
           playAudio();
         } else if (event.detail.status === 'not-presenting') {
           // Pause animation and audio when AR session ends
@@ -126,6 +143,7 @@
           stopAudio();
         }
       });
+      restartButton.addEventListener('click', restartExperience);
     });
   </script>
   <script src="posters.js"></script>

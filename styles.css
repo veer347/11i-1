@@ -239,6 +239,35 @@ model-viewer > #ar-prompt1 {
   white-space: pre-wrap; /* Allow the text to wrap and carry forward to the next line */
 }
 
+#restart-button{
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  bottom: 0px;
+  padding: 0px 20px 0px 20px;
+  font-family: Roboto Regular, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  color:#ffffff;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 18px;
+  border: 1px solid #DADCE0;
+}
+
+model-viewer > #restart-button {
+  position: absolute;
+  display: none;
+}
+
 model-viewer > #ar-prompt {
   position: absolute;
   left: 50%;
@@ -257,4 +286,9 @@ model-viewer[ar-status="session-started"] > #ar-prompt {
 
 model-viewer > #ar-prompt > img {
   animation: circle 4s linear infinite;
+}
+
+
+model-viewer[ar-status="object-placed"] > #restart-button {
+  display: block;
 }
