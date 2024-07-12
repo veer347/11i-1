@@ -138,23 +138,23 @@
         // }, 5);  // Adjust the delay if needed
       });
 
-      modelViewer.addEventListener('ar-status', (event) => {
-        if (event.detail.status === 'object-placed') {
-          // Play animation and audio when AR session starts
-          console.log('AR session started');
-          modelViewer.play();
-        //   setTimeout(() => {
-        //   modelViewer.pause();
-        //   console.log('Paused at desired frame');
-        // }, 2200);  
-          playAudio();
-        } else if (event.detail.status === 'not-presenting') {
-          // Pause animation and audio when AR session ends
-          console.log('AR session ended');
-          modelViewer.pause();
-          stopAudio();
-        }
-      });
+      // modelViewer.addEventListener('ar-status', (event) => {
+      //   if (event.detail.status === 'object-placed') {
+      //     // Play animation and audio when AR session starts
+      //     console.log('AR session started');
+      //     modelViewer.play();
+      //   //   setTimeout(() => {
+      //   //   modelViewer.pause();
+      //   //   console.log('Paused at desired frame');
+      //   // }, 2200);  
+      //     playAudio();
+      //   } else if (event.detail.status === 'not-presenting') {
+      //     // Pause animation and audio when AR session ends
+      //     console.log('AR session ended');
+      //     modelViewer.pause();
+      //     stopAudio();
+      //   }
+      // });
       restartButton.addEventListener('click', restartExperience);
       screenshotButton.addEventListener('click', takeScreenshot);
     });
