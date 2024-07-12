@@ -111,6 +111,7 @@
       var modelViewer = document.getElementById('model-viewer');
       var arButton = document.getElementById('ar-button');
       var restartButton = document.getElementById('restart-button');
+      var screenshotButton = document.getElementById('screenshot-button');
 
       arButton.addEventListener('click', function() {
         // Check if the platform is iOS
@@ -151,7 +152,7 @@
           stopAudio();
         }
       });
-      restartButton.addEventListener('click', restartExperience);
+      // restartButton.addEventListener('click', restartExperience);
       screenshotButton.addEventListener('click', takeScreenshot);
     });
   </script>
