@@ -77,10 +77,8 @@
   <!-- Script to control animation in AR mode -->
   <script>
 
-    function restartExperience() {
-      var modelViewer = document.getElementById('model-viewer');
-      stopAudio();
-      modelViewer.src = modelViewer.src;  // Reload the model viewer
+  function restartExperience() {
+      location.reload();  // Reload the entire page
     }
     function playAudio() {
       var audio = document.getElementById('background-audio');
