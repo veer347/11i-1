@@ -99,12 +99,14 @@
       audio.currentTime = 0;
     }
     function takeScreenshot() {
-      html2canvas(document.body).then(function(canvas) {
-        var link = document.createElement('a');
-        link.href = canvas.toDataURL('image/png');
-        link.download = 'screenshot.png';
-        link.click();
-      });
+      setTimeout(() => {
+        html2canvas(document.body).then(function(canvas) {
+          var link = document.createElement('a');
+          link.href = canvas.toDataURL('image/png');
+          link.download = 'screenshot.png';
+          link.click();
+        });
+      }, 200); // Adjust delay as needed
     }
 
     document.addEventListener('DOMContentLoaded', function() {
