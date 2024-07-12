@@ -242,7 +242,7 @@ model-viewer > #ar-prompt1 {
   width: 90%; /* Set the width to 90% to allow the text to wrap */
   max-width: 300px; /* Optionally, set a maximum width for the element */
   font-family: "Roboto Regular", "Helvetica Neue", sans-serif;
-  font-size: 25px;
+  font-size: 15px;
   color: #ffffff;
   display: none;
   text-align: center; /* Center the text within the element */
