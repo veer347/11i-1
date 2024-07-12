@@ -115,13 +115,22 @@
       var arButton = document.getElementById('ar-button');
       var restartButton = document.getElementById('restart-button');
       var screenshotButton = document.getElementById('screenshot-button');
+      let animationPlaying = false;
 
       arButton.addEventListener('click', function() {
         // Check if the platform is iOS
         var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
         if (isIOS) {
-          modelViewer.play();
+          if (!animationPlaying) {
+        animationPlaying = true;
+        modelViewer.play();
+        setTimeout(() => {
+          modelViewer.pause();
+          animationPlaying = false;
+          modelViewer.currentTime = 0; // Reset animation to the beginning
+        }, 11000); // Adjust the duration (in milliseconds) as needed
+      }
           // For iOS, play audio when AR button is clicked
           playAudio();
         }
