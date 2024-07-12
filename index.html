@@ -142,7 +142,7 @@
         if (event.detail.status === 'object-placed') {
           // Play animation and audio when AR session starts
           console.log('AR session started');
-          modelViewer.play();
+          modelViewer.restart();
           setTimeout(() => {
           modelViewer.pause();
           console.log('Paused at desired frame');
