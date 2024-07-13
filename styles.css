@@ -364,14 +364,7 @@ model-viewer > #ar-prompt2 {
   border: 1px solid #DADCE0;
 }
 
-model-viewer > #restart-button {
-  position: absolute;
-  display: none;
-}
-model-viewer > #screenshot-button {
-  position: absolute;
-  display: none;
-}
+
 model-viewer > #ar-prompt {
   position: absolute;
   left: 50%;
@@ -383,9 +376,9 @@ model-viewer > #ar-prompt {
 model-viewer[ar-status="session-started"] > #ar-prompt1 {
   display: block;
 }
-model-viewer[ar-status="object-placed"] > #ar-prompt2 {
+/* model-viewer[ar-status="object-placed"] > #ar-prompt2 {
   display: block;
-}
+} */
 model-viewer[ar-status="session-started"] > #ar-prompt {
   display: block;
 }
