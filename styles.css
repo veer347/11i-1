@@ -286,6 +286,7 @@ model-viewer {
 #ar-prompt2 {
   position: relative;
   overflow: hidden;
+  display: none;
 }
 model-viewer > #ar-prompt1 {
   position: absolute;
