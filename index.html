@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Indian2Promo</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script> -->
 </head>
 <body>
   <div class="background">
@@ -48,7 +48,7 @@
     </div>
    
   </div>
-  <model-viewer id="model-viewer" src="comfinal.glb" ios-src="ii - Copy (1) - Copy_test.usdz" ar ar-placement="floor" ar-scale="0.9 0.9 0.9" ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster (4).webp" shadow-intensity="1" animation-name="salute" animation-controls>
+  <model-viewer id="model-viewer" src="comfinal.glb" ios-src="123ffifnal.usdz" ar ar-placement="floor" ar-scale="0.9 0.9 0.9" ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster (4).webp" shadow-intensity="1" animation-name="salute" animation-controls>
     <div class="progress-bar hide" slot="progress-bar">
       <div class="update-bar"></div>
     </div>
@@ -63,7 +63,7 @@
     <div id="ar-prompt">
       <img src="ar_hand_prompt.png">
     </div>
-    <!-- <button id="restart-button">Restart Experience</button> -->
+    
     <button id="screenshot-button">Take Screenshot</button>
   </model-viewer> 
   <audio id="background-audio" loop>
@@ -78,9 +78,7 @@
   <!-- Script to control animation in AR mode -->
   <script>
 
-  function restartExperience() {
-      location.reload();  // Reload the entire page
-    }
+  
     function playAudio() {
       var audio = document.getElementById('background-audio');
       audio.play().catch(function(error) {
@@ -97,22 +95,12 @@
       audio.pause();
       audio.currentTime = 0;
     }
-    function takeScreenshot() {
-      setTimeout(() => {
-        html2canvas(document.body).then(function(canvas) {
-          var link = document.createElement('a');
-          link.href = canvas.toDataURL('image/png');
-          link.download = 'screenshot.png';
-          link.click();
-        });
-      }, 200); // Adjust delay as needed
-    }
+    
 
     document.addEventListener('DOMContentLoaded', function() {
       var modelViewer = document.getElementById('model-viewer');
       var arButton = document.getElementById('ar-button');
-      var restartButton = document.getElementById('restart-button');
-      var screenshotButton = document.getElementById('screenshot-button');
+     
       let animationPlaying = false;
 
       arButton.addEventListener('click', function() {
@@ -163,8 +151,7 @@
           stopAudio();
         }
       });
-      // restartButton.addEventListener('click', restartExperience);
-      screenshotButton.addEventListener('click', takeScreenshot);
+    
     });
   </script>
   <script src="posters.js"></script>
