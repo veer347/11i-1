@@ -283,8 +283,25 @@ model-viewer {
   position: relative;
   overflow: hidden;
 }
-
+#ar-prompt2 {
+  position: relative;
+  overflow: hidden;
+}
 model-viewer > #ar-prompt1 {
+  position: absolute;
+  left: 45%; /* Align the element horizontally to the center */
+  transform: translateX(-50%); /* Center the element precisely */
+  bottom: 550px; /* Add some space from the bottom, adjust as needed */
+  width: 90%; /* Set the width to 90% to allow the text to wrap */
+  max-width: 300px; /* Optionally, set a maximum width for the element */
+  font-family: "Roboto Regular", "Helvetica Neue", sans-serif;
+  font-size: 15px;
+  color: #ffffff;
+  display: none;
+  text-align: center; /* Center the text within the element */
+  white-space: pre-wrap; /* Allow the text to wrap and carry forward to the next line */
+}
+model-viewer > #ar-prompt2 {
   position: absolute;
   left: 45%; /* Align the element horizontally to the center */
   transform: translateX(-50%); /* Center the element precisely */
@@ -365,7 +382,9 @@ model-viewer > #ar-prompt {
 model-viewer[ar-status="session-started"] > #ar-prompt1 {
   display: block;
 }
-
+model-viewer[ar-status="object-placed"] > #ar-prompt2 {
+  display: block;
+}
 model-viewer[ar-status="session-started"] > #ar-prompt {
   display: block;
 }
