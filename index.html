@@ -57,8 +57,11 @@
     <button id="screenshot-button">Take Screenshot</button>
   </model-viewer> 
   <div class="screen-prompt" id="popup">
-    Start Screen Recording before entering AR
+    Turn on the Screen Recorder before starting the AR Experience
   </div>
+  <button class="info" id="info">
+    <img src="info (3).png">
+  </button>
   <audio id="background-audio" loop>
     <source src="Come back indian (1).mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -104,10 +107,11 @@
     }
 
     // Show the popup after 1 second
-    setTimeout(showPopup, 1000);
+    setTimeout(showPopup, 3000);
     document.addEventListener('DOMContentLoaded', function() {
       var modelViewer = document.getElementById('model-viewer');
       var arButton = document.getElementById('ar-button');
+      var infobutton=document.getElementById('info');
      
       let animationPlaying = false;
 
@@ -155,7 +159,7 @@
           stopAudio();
         }
       });
-    
+      infobutton.addEventListener('click', showPopup);
     });
   </script>
   <script src="posters.js"></script>
