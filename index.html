@@ -25,24 +25,14 @@
             <div class="poster-container">
               <img src="3.jpeg" alt="Poster 3" class="poster">
             </div>
-            <!-- <div class="poster-container">
-              <img src="4.jpeg" alt="Poster 4" class="poster">
-            </div>
-            <div class="poster-container">
-              <img src="5.jpeg" alt="Poster 5" class="poster">
-            </div>
-            <div class="poster-container">
-              <img src="6.jpeg" alt="Poster 6" class="poster">
-            </div> -->
+          
           </div>
         </div>
         <div class="dots-container" id="dotsContainer">
           <span class="dot active" onclick="currentSlide(0)"></span>
           <span class="dot" onclick="currentSlide(1)"></span>
           <span class="dot" onclick="currentSlide(2)"></span>
-          <!-- <span class="dot" onclick="currentSlide(3)"></span>
-          <span class="dot" onclick="currentSlide(4)"></span>
-          <span class="dot" onclick="currentSlide(5)"></span> -->
+         
         </div>
       </div>
     </div>
@@ -66,6 +56,9 @@
     
     <button id="screenshot-button">Take Screenshot</button>
   </model-viewer> 
+  <div class="screen-prompt" id="popup">
+    Start Screen Recording before entering AR
+  </div>
   <audio id="background-audio" loop>
     <source src="Come back indian (1).mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -89,6 +82,12 @@
           console.log('Paused at desired frame');
         }, 19000); 
     }
+    function playAudioios() {
+      var audio = document.getElementById('background-audio');
+      audio.play().catch(function(error) {
+        console.error('Error playing audio:', error);
+      });
+    }
 
     function stopAudio() {
       var audio = document.getElementById('background-audio');
@@ -96,7 +95,16 @@
       audio.currentTime = 0;
     }
     
+    function showPopup() {
+      const popup = document.getElementById('popup');
+      popup.style.display = 'block';
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, 3000); // Hide after 3 seconds
+    }
 
+    // Show the popup after 1 second
+    setTimeout(showPopup, 1000);
     document.addEventListener('DOMContentLoaded', function() {
       var modelViewer = document.getElementById('model-viewer');
       var arButton = document.getElementById('ar-button');
@@ -111,14 +119,10 @@
           if (!animationPlaying) {
         animationPlaying = true;
         modelViewer.play();
-        setTimeout(() => {
-          modelViewer.pause();
-          animationPlaying = false;
-          modelViewer.currentTime = 0; // Reset animation to the beginning
-        }, 11000); // Adjust the duration (in milliseconds) as needed
+      
       }
           // For iOS, play audio when AR button is clicked
-          playAudio();
+          playAudioios();
         }
       });
 
