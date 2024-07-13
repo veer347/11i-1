@@ -136,18 +136,45 @@ body {
 }
 .screen-prompt {
   position: absolute;
-  top: 20px;
-  left:40px;
-  width: 20%;
+  top: 2%;
+  left: 5%;
+  width: 90%;
+  max-width: 300px;
   text-align: center;
   z-index: 1;
-  background-color:none;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
   color: #ffffff;
   padding: 10px;
   border: 1px solid #020202;
   border-radius: 4px;
   display: none; /* Initially hidden */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for better visibility */
+  transform: translateY(20px); /* Slight offset for a smoother appearance */
+  transition: opacity 0.3s, transform 0.3s; /* Smooth transition effects */
 }
+
+@media (min-width: 768px) {
+  .screen-prompt {
+    top: 20px;
+    left: 40px;
+    width: 20%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .screen-prompt {
+    top: 20px;
+    left: 40px;
+    width: 15%;
+  }
+}
+
+.screen-prompt.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .info {
   position: absolute;
   top: 20px;
