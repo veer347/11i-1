@@ -25,19 +25,17 @@
             <div class="poster-container">
               <img src="3.jpeg" alt="Poster 3" class="poster">
             </div>
-          
           </div>
         </div>
         <div class="dots-container" id="dotsContainer">
           <span class="dot active" onclick="currentSlide(0)"></span>
           <span class="dot" onclick="currentSlide(1)"></span>
           <span class="dot" onclick="currentSlide(2)"></span>
-         
         </div>
       </div>
     </div>
-   
   </div>
+  
   <model-viewer id="model-viewer" src="comfinal.glb" ios-src="123ffifnal.usdz" ar ar-placement="floor" ar-scale="fixed" ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster (4).webp" shadow-intensity="1" animation-name="salute" animation-controls>
     <div class="progress-bar hide" slot="progress-bar">
       <div class="update-bar"></div>
@@ -56,38 +54,33 @@
     <div id="ar-prompt">
       <img src="ar_hand_prompt.png">
     </div>
-    
-    <!-- <button id="screenshot-button">Take Screenshot</button> -->
   </model-viewer> 
+  
   <div class="screen-prompt" id="popup">
     Turn on the Screen Recorder before starting the AR Experience
   </div>
+  
   <button class="info" id="info">
     <img src="info (3).png">
   </button>
+  
   <audio id="background-audio" loop>
     <source src="Come back indian (1).mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio> 
-  
   
   <!-- Loads <model-viewer> for browsers: -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
 
   <!-- Script to control animation in AR mode -->
   <script>
-
-  
     function playAudio() {
       var audio = document.getElementById('background-audio');
       audio.play().catch(function(error) {
         console.error('Error playing audio:', error);
       });
-      setTimeout(() => {
-          audio.pause();
-          console.log('Paused at desired frame');
-        }, 19000); 
     }
+
     function playAudioios() {
       var audio = document.getElementById('background-audio');
       audio.play().catch(function(error) {
@@ -109,12 +102,29 @@
       }, 3000); // Hide after 3 seconds
     }
 
+    // Function to control the animation loop
+    function restartAnimation(modelViewer, delay) {
+      // Play the animation
+      modelViewer.play();
+      
+      // Listen for the animation end event
+      modelViewer.addEventListener('loop', () => {
+        console.log('Animation ended');
+        modelViewer.pause();
+        modelViewer.currentTime = 0;  // Reset animation to start
+        setTimeout(() => {
+          restartAnimation(modelViewer, delay);
+        }, delay);  // Restart after the specified delay
+      }, { once: true });
+    }
+
     // Show the popup after 1 second
     setTimeout(showPopup, 1000);
+
     document.addEventListener('DOMContentLoaded', function() {
       var modelViewer = document.getElementById('model-viewer');
       var arButton = document.getElementById('ar-button');
-      var infobutton=document.getElementById('info');
+      var infobutton = document.getElementById('info');
      
       let animationPlaying = false;
 
@@ -124,10 +134,9 @@
 
         if (isIOS) {
           if (!animationPlaying) {
-        animationPlaying = true;
-        modelViewer.play();
-      
-      }
+            animationPlaying = true;
+            modelViewer.play();
+          }
           // For iOS, play audio when AR button is clicked
           playAudioios();
         }
@@ -142,19 +151,16 @@
         setTimeout(() => {
           modelViewer.pause();
           console.log('Paused at desired frame');
-        }, 5);  // Adjust the delay if needed
+        }, 1);  // Adjust the delay if needed
       });
 
       modelViewer.addEventListener('ar-status', (event) => {
         if (event.detail.status === 'object-placed') {
           // Play animation and audio when AR session starts
           console.log('AR session started');
-          modelViewer.play();
-          setTimeout(() => {
-          modelViewer.pause();
-          console.log('Paused at desired frame');
-        }, 2500);  
+          restartAnimation(modelViewer, 5000); // Call the restartAnimation with the desired delay
           playAudio();
+
           // Show ar-prompt2 after 7 seconds
           setTimeout(() => {
             document.getElementById('ar-prompt2').style.display = 'block';
@@ -163,7 +169,6 @@
               document.getElementById('ar-prompt2').style.display = 'none';
             }, 5000);
           }, 7000);
-
         } else if (event.detail.status === 'not-presenting') {
           // Pause animation and audio when AR session ends
           console.log('AR session ended');
@@ -171,6 +176,7 @@
           stopAudio();
         }
       });
+
       infobutton.addEventListener('click', showPopup);
     });
   </script>
