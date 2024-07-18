@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>&lt;model-viewer&gt; AR example</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="demo-styles.css">
+  <!-- The following libraries and polyfills are recommended to maximize browser support -->
+  <!-- NOTE: you must adjust the paths as appropriate for your project -->
+  <!-- 💁 OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+  <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+</head> 
+<body>
+  <div id="card">
+    <!-- All you need to put beautiful, interactive 3D content on your site: -->
+    <model-viewer src="https://cdn.glitch.global/f82fa300-1de8-403f-8b1d-08ef58c3a4ad/changes.glb?v=1721275423498"
+                  ios-src="https://cdn.glitch.me/f82fa300-1de8-403f-8b1d-08ef58c3a4ad/indian2text.usdz?v=1721323549908"
+                  poster="https://cdn.glitch.global/f82fa300-1de8-403f-8b1d-08ef58c3a4ad/73801930346.png?v=1721324353626"
+                  alt="A 3D model of an astronaut"
+                  shadow-intensity="1"
+                  camera-controls
+                  autoplay
+                  ar
+                  ar-modes="scene-viewer webxr quick-look">
+    </model-viewer>
+    <section class="attribution">
+      <span>
+        <h1>INDIAN</h1>
+        <span>By <a href="https://allreal.io/" target="_blank">AllReaL</a></span>
+      </span>
+      
+      <audio id="background-music" src="https://cdn.glitch.global/a70dc6a3-02de-4e42-b92a-49aa23c4d3d6/WhatsApp%20Audio%202024-07-17%20at%2018.26.07.mpeg?v=1721231351386" loop></audio>
+      <button id="play-button">Play Music</button>
+    </section>
+  </div>
+  
+  <footer>
+    
+    <a href="https://allreal.io/">
+      <img src="https://cdn.glitch.global/f82fa300-1de8-403f-8b1d-08ef58c3a4ad/73801930346.png?v=1721324353626" alt="remix button" aria-label="remix" height="80">
+    </a>
+  </footer>
+  
+  <!-- 💁 Include both scripts below to support all browsers! -->
+  <!-- Loads <model-viewer> for modern browsers: -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const music = document.getElementById('background-music');
+        const playButton = document.getElementById('play-button');
+        
+        playButton.addEventListener('click', () => {
+            music.play().catch(error => {
+                console.log("Music playback prevented:", error);
+            });
+            playButton.style.display = 'none'; // Hide button after playing
+        });
+    });
+  </script>
+</body>
+</html>
